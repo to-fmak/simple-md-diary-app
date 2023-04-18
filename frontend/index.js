@@ -1,13 +1,13 @@
-import { fetchApi } from "./modules/fetchApi.js";
+import { getDiary } from "./modules/fetchApi.js";
 import { showTodayDate, showForm } from "./modules/render.js";
 
 // init date
 showTodayDate();
 // get today's diary on load
-fetchApi();
+getDiary();
 
 // add events
-document.getElementById("date").onchange = fetchApi;
+document.getElementById("date").onchange = getDiary;
 
 document.getElementById("writeBtn").onclick = showForm;
 

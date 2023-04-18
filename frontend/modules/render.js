@@ -1,5 +1,5 @@
 import { apiEndpoint } from "../config.js";
-import { fetchApi } from "./fetchApi.js";
+import { writeDiary } from "./fetchApi.js";
 
 const showTodayDate = () => {
   const date = new Date();
@@ -9,9 +9,9 @@ const showTodayDate = () => {
   const today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("date").value = today;
   return today;
-}
+};
 
-const showDiaries = (data, date) => {
+const showDiary = (data, date) => {
   if (data?.msg) {
     document.getElementById("contents").innerHTML = `
     <h2>No data.</h2>
@@ -51,19 +51,8 @@ const showForm = () => {
       text
     };
     console.log(data);
-
-    fetch(`${apiEndpoint}/${date}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(async res => {
-      const data = await res.json();
-      console.log(data);
-      fetchApi();
-    });
+    writeDiary(data, apiEndpoint, date);
   };
-}
+};
 
-export { showTodayDate, showDiaries, showForm };
+export { showTodayDate, showDiary, showForm };

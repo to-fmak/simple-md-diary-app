@@ -1,7 +1,7 @@
 import { apiEndpoint } from "../config.js";
-import { showDiaries } from "./render.js";
+import { showDiary } from "./render.js";
 
-const fetchApi = () => {
+const getDiary = () => {
   const date = document.getElementById("date").value;
   if (!date) {
     document.getElementById("contents").innerHTML = `
@@ -13,8 +13,22 @@ const fetchApi = () => {
     .then(response => response.json())
     .then(data => {
       document.getElementById("contents").innerHTML = "";
-      showDiaries(data, date);
+      showDiary(data, date);
     });
 };
 
-export { fetchApi };
+const writeDiary = (data, apiEndpoint, date) => {
+  fetch(`${apiEndpoint}/${date}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(async res => {
+    const data = await res.json();
+    console.log(data);
+    getDiary();
+  });
+};
+
+export { getDiary, writeDiary };

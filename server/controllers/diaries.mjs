@@ -10,8 +10,8 @@ const getDiaryByDate = async (req, res) => {
   const _date = req.params.id;
   const diary = await Diary.findOne({
     createdAt: {
-      $gte: new Date(`${_date}T00:00:00+09:00`),
-      $lte: new Date(`${_date}T23:59:59+09:00`)
+      $gte: new Date(`${_date}T00:00:00`),
+      $lte: new Date(`${_date}T23:59:59`)
     }
   });
   if (diary === null) return res.status(404).json({ msg: "Diary Not Found" });
@@ -28,8 +28,8 @@ const writeDiary = async (req, res) => {
   const _date = req.params.id;
   const oldDiary = await Diary.findOne({
     createdAt: {
-      $gte: new Date(`${_date}T00:00:00+09:00`),
-      $lte: new Date(`${_date}T23:59:59+09:00`)
+      $gte: new Date(Date.UTC(`${_date}T00:00:00`)),
+      $lte: new Date(Date.UTC(`${_date}T23:59:59`))
     }
   });
   if (oldDiary !== null)
@@ -52,8 +52,8 @@ const updateDiary = async (req, res) => {
   const _date = req.params.id;
   const diary = await Diary.findOne({
     createdAt: {
-      $gte: new Date(`${_date}T00:00:00+09:00`),
-      $lte: new Date(`${_date}T23:59:59+09:00`)
+      $gte: new Date(Date.UTC(`${_date}T00:00:00`)),
+      $lte: new Date(Date.UTC(`${_date}T23:59:59`))
     }
   });
   console.log(diary);

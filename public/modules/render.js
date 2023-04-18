@@ -11,17 +11,17 @@ const showTodayDate = () => {
   return today;
 };
 
-const showDiary = (data, date) => {
+const showDiary = (data) => {
   if (data?.msg) {
     document.getElementById("contents").innerHTML = `
     <h2>No data.</h2>
   `;
     return 0;
   }
-
+  const date = new Date(data["updatedAt"]);
   document.getElementById("contents").innerHTML += `
     <div class="container">
-      <span class="title">${data["title"]}</span><span class="date">${date}</span>
+      <span class="title">${data["title"]}</span><span class="date">last updated: ${date.toLocaleTimeString()}</span>
       <p>${data["text"]}</p>
     </div>
   `;

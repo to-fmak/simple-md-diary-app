@@ -13,7 +13,7 @@ const getDiary = () => {
     .then(response => response.json())
     .then(data => {
       document.getElementById("contents").innerHTML = "";
-      showDiary(data, date);
+      showDiary(data);
     });
 };
 

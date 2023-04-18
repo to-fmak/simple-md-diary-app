@@ -37,10 +37,11 @@ const showForm = () => {
       <input type="submit" class="btn" id="submit" value="Submit">
       <input type="button" class="btn" id="backBtn" value="Back">
       <div class="inputTitleContainer">
-        <input type="text" id="inputTitle" placeholder="untitled">
+        <input type="text" class="input" id="inputTitle" placeholder="untitled" spellcheck="false">
       </div>
+      <hr>
       <div class="inputTextContainer">
-        <textarea id="inputText"></textarea>
+        <textarea class="input" id="inputText" spellcheck="false"></textarea>
       </div>
     </form>
   `;

@@ -1,16 +1,25 @@
 * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body {
-  background-color: antiquewhite;
+  background-color: rgba(0, 0, 0, 0.824);
+}
+
+h2 {
+  color: aliceblue;
 }
 
 #date {
+  border: 0cap;
+  border-radius: 10px;
   height: 30px;
   width: 150px;
   font-size: large;
   padding: 15px;
+  background-color: rgba(121, 114, 114, 0.445);
+  color: aliceblue;
+
 }
 
 #date,
@@ -24,6 +33,7 @@ body {
   border-radius: 10px;
   margin-top: 20px;
   padding: 10px;
+  color: aliceblue;
 }
 
 .title {
@@ -31,15 +41,20 @@ body {
   padding-right: 20px;
 }
 
-#inputTitle {
-  border: 2px solid;
-  border-radius: 15px;
-  border-color: rgba(121, 114, 114, 0.445);
-  height: 50px;
-  width: 80%;
-  font-size: 50px;
+.input {
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: aliceblue;
+  width: 100%;
   padding: 10px;
   margin-top: 20px;
+  margin-left: -10px;
+}
+
+#inputTitle {
+  height: 50px;
+  font-size: 50px;
 }
 
 #inputText {
@@ -47,14 +62,15 @@ body {
   border-radius: 15px;
   border-color: rgba(121, 114, 114, 0.445);
   height: 550px;
-  width: 80%;
   font-size: 30px;
-  padding: 10px;
-  margin-top: 20px;
   resize: none;
 }
 
 .btn {
+  border: 0cap;
+  border-radius: 10px;
   height: 50px;
   width: 80px;
+  background-color: rgba(121, 114, 114, 0.445);
+  color: aliceblue;
 }

@@ -1,17 +1,25 @@
 import express from "express";
-import apiRoutes from "./api-routes/index.mjs";
-import "./helpers/db.mjs";
+import apiRoutes from "./server/api-routes/index.mjs";
+import "./server/helpers/db.mjs";
 import env from "dotenv";
 env.config();
 import cors from "cors";
 
 const app = express();
-app.disable("x-powered-by");
-app.use(cors());
 const port = process.env.PORT || 8080;
 
+app.disable("x-powered-by");
+
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use(express.json());
 app.use("/api", apiRoutes);
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
 app.use((req, res) => {
   res.status(404).json({ msg: "Page Not Found" });
@@ -24,5 +32,7 @@ app.use((err, req, res, next) => {
   console.log(err);
   res.status(500).json({ msg: "error" });
 });
+
+
 
 app.listen(port, () => console.log(`Server Start: http://localhost:${port}`));

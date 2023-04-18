@@ -2,7 +2,6 @@ import express from "express";
 import { body } from "express-validator";
 import {
   updateDiary,
-  deleteDiaryId,
   getAllDiaries,
   getDiaryByDate,
   writeDiary
@@ -43,7 +42,5 @@ router.patch(
     .isInt({ min: 1, max: 5 }),
   requestErrorHandler(updateDiary)
 );
-
-router.delete("/:id", requestErrorHandler(deleteDiaryId));
 
 export default router;

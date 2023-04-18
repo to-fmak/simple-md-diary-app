@@ -1,20 +1,20 @@
 import Diary from "../models/diary.mjs";
 import { validationResult } from "express-validator";
 
-// const getAllDiaries = async (req, res) => {
-//   const Diaries = await Diary.find().sort({ updatedAt: -1 });
-//   res.json(Diaries);
-// }
+const getAllDiaries = async (req, res) => {
+  const Diaries = await Diary.find().sort({ updatedAt: -1 });
+  res.json(Diaries);
+}
 
 const getDiaryByDate = async (req, res) => {
   const _date = req.params.id;
-  const diary = await Diary.find({
+  const diary = await Diary.findOne({
     createdAt: {
       "$gte": new Date(`${_date}T00:00:00+09:00`),
       "$lte": new Date(`${_date}T23:59:59+09:00`)
     }
   });
-  if (diary.length === 0) return res.status(404).json({ msg: "Diary Not Found" });
+  if (diary === null) return res.status(404).json({ msg: "Diary Not Found" });
   res.json(diary);
 }
 
@@ -39,18 +39,22 @@ const updateDiary = async (req, res) => {
     return res.status(400).json(err);
   }
 
-  const { title, description, comment, rating } = req.body;
-  const _id = req.params.id;
-  const Diary = await Diary.findById(_id);
+  const { title, text } = req.body;
+  const _date = req.params.id;
+  const diary = await Diary.findOne({
+    createdAt: {
+      "$gte": new Date(`${_date}T00:00:00+09:00`),
+      "$lte": new Date(`${_date}T23:59:59+09:00`)
+    }
+  });
+  console.log(diary);
 
-  if (Diary === null) return res.status(404).json({ msg: "Diary Not Found" });
+  if (diary === null) return res.status(404).json({ msg: "Diary Not Found" });
 
-  if (title !== undefined) Diary.title = title;
-  if (description !== undefined) Diary.description = description;
-  if (comment !== undefined) Diary.comment = comment;
-  if (rating !== undefined) Diary.rating = rating;
-  await Diary.save();
-  res.json(Diary);
+  if (title !== undefined) diary.title = title;
+  if (text !== undefined) diary.text = text;
+  await diary.save();
+  res.json(diary);
 }
 
 const deleteDiaryId = async (req, res) => {
@@ -61,4 +65,4 @@ const deleteDiaryId = async (req, res) => {
   res.json({ "msg": "Delete succeeded." });
 }
 
-export { getDiaryByDate, writeDiary, updateDiary, deleteDiaryId };
+export { getAllDiaries, getDiaryByDate, writeDiary, updateDiary, deleteDiaryId };

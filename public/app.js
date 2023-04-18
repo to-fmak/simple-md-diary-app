@@ -1,5 +1,5 @@
 import { getDiary } from "./modules/fetchApi.js";
-import { showTodayDate, showForm } from "./modules/render.js";
+import { showTodayDate, showForm, showDiary } from "./modules/render.js";
 
 // init date
 showTodayDate();
@@ -10,6 +10,3 @@ getDiary();
 document.getElementById("date").onchange = getDiary;
 
 document.getElementById("writeBtn").onclick = showForm;
-
-// const title = document.getElementById("title");
-// const text = document.getElementById("text");

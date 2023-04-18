@@ -2,6 +2,10 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
+body {
+  background-color: antiquewhite;
+}
+
 #date {
   height: 30px;
   width: 150px;
@@ -15,7 +19,7 @@
   margin-bottom: 10px;
 }
 
-.container {
+.contentsContainer {
   border: 1px solid;
   border-radius: 10px;
   margin-top: 20px;
@@ -46,10 +50,11 @@
   width: 80%;
   font-size: 30px;
   padding: 10px;
+  margin-top: 20px;
   resize: none;
 }
 
-#writeBtn, #submit {
+.btn {
   height: 50px;
   width: 80px;
 }

@@ -1,0 +1,55 @@
+* {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#date {
+  height: 30px;
+  width: 150px;
+  font-size: large;
+  padding: 15px;
+}
+
+#date,
+#contents {
+  margin: 1%;
+  margin-bottom: 10px;
+}
+
+.container {
+  border: 1px solid;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.title {
+  font-size: 30px;
+  padding-right: 20px;
+}
+
+.inputTitle {
+  border: 2px solid;
+  border-radius: 15px;
+  border-color: rgba(121, 114, 114, 0.445);
+  height: 50px;
+  width: 80%;
+  font-size: 50px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.inputText {
+  margin-top: 10px;
+  border-radius: 15px;
+  border-color: rgba(121, 114, 114, 0.445);
+  height: 550px;
+  width: 80%;
+  font-size: 30px;
+  padding: 10px;
+  resize: none;
+}
+
+#writeBtn, #submit {
+  height: 50px;
+  width: 80px;
+}

@@ -10,7 +10,7 @@ router.get("/", requestErrorHandler(getAllDiaries));
 router.get("/:id", requestErrorHandler(getDiaryByDate));
 
 router.post(
-  "/",
+  "/:id",
   body("title").notEmpty().withMessage("error message"),
   body("text").notEmpty().withMessage("error message"),
   requestErrorHandler(writeDiary));

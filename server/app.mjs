@@ -6,6 +6,7 @@ env.config();
 import cors from "cors";
 
 const app = express();
+app.disable("x-powered-by");
 app.use(cors());
 const port = process.env.PORT || 8080;
 

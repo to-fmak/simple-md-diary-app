@@ -31,4 +31,18 @@ const writeDiary = (data, apiEndpoint, date) => {
   });
 };
 
-export { getDiary, writeDiary };
+const updateDiary = (data, apiEndpoint, date) => {
+  fetch(`${apiEndpoint}/${date}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(async res => {
+    const data = await res.json();
+    console.log(data);
+    getDiary();
+  });
+};
+
+export { getDiary, writeDiary, updateDiary };

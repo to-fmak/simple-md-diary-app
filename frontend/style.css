@@ -27,7 +27,7 @@
   padding-right: 20px;
 }
 
-.inputTitle {
+#inputTitle {
   border: 2px solid;
   border-radius: 15px;
   border-color: rgba(121, 114, 114, 0.445);
@@ -38,7 +38,7 @@
   margin-top: 20px;
 }
 
-.inputText {
+#inputText {
   margin-top: 10px;
   border-radius: 15px;
   border-color: rgba(121, 114, 114, 0.445);

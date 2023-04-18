@@ -20,11 +20,19 @@ const getDiaryByDate = async (req, res) => {
 
 const writeDiary = async (req, res) => {
   const errors = validationResult(req);
-
   if (!errors.isEmpty()) {
     const err = errors.array();
     return res.status(400).json(err);
   }
+
+  const _date = req.params.id;
+  const oldDiary = await Diary.findOne({
+    createdAt: {
+      "$gte": new Date(`${_date}T00:00:00+09:00`),
+      "$lte": new Date(`${_date}T23:59:59+09:00`)
+    }
+  });
+  if (oldDiary !== null) return res.status(404).json({ msg: "Diary aleady exists." });
 
   const diary = new Diary(req.body);
   const newDiary = await diary.save();

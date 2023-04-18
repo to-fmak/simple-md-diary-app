@@ -66,18 +66,4 @@ const updateDiary = async (req, res) => {
   res.json(diary);
 };
 
-const deleteDiaryId = async (req, res) => {
-  const _id = req.params.id;
-  const { deletedCount } = await Diary.deleteOne({ _id });
-  if (deletedCount === 0)
-    return res.status(404).json({ msg: "Diary Not Found" });
-  res.json({ msg: "Delete succeeded." });
-};
-
-export {
-  getAllDiaries,
-  getDiaryByDate,
-  writeDiary,
-  updateDiary,
-  deleteDiaryId
-};
+export { getAllDiaries, getDiaryByDate, writeDiary, updateDiary };

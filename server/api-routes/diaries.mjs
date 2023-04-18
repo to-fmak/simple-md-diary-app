@@ -15,11 +15,14 @@ router.get("/", requestErrorHandler(getAllDiaries));
 router.get("/:id", requestErrorHandler(getDiaryByDate));
 
 router.post(
-  "/:id",
+  "/",
   body("title")
     .notEmpty()
     .withMessage("error message"),
   body("text")
+    .notEmpty()
+    .withMessage("error message"),
+  body("day")
     .notEmpty()
     .withMessage("error message"),
   requestErrorHandler(writeDiary)
@@ -30,16 +33,9 @@ router.patch(
   body("title")
     .optional()
     .notEmpty(),
-  body("description")
+  body("text")
     .optional()
     .notEmpty(),
-  body("comment")
-    .optional()
-    .notEmpty(),
-  body("rating")
-    .optional()
-    .notEmpty()
-    .isInt({ min: 1, max: 5 }),
   requestErrorHandler(updateDiary)
 );
 

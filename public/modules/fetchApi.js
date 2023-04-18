@@ -2,14 +2,14 @@ import { apiEndpoint } from "../config.js";
 import { showDiary } from "./render.js";
 
 const getDiary = () => {
-  const date = document.getElementById("date").value;
-  if (!date) {
+  const day = document.getElementById("date").value;
+  if (!day) {
     document.getElementById("contents").innerHTML = `
     <h2>Specify a date.</h2>
   `;
     return;
   }
-  fetch(`${apiEndpoint}/${date}`)
+  fetch(`${apiEndpoint}/${day}`)
     .then(response => response.json())
     .then(data => {
       document.getElementById("contents").innerHTML = "";
@@ -17,8 +17,8 @@ const getDiary = () => {
     });
 };
 
-const writeDiary = (data, apiEndpoint, date) => {
-  fetch(`${apiEndpoint}/${date}`, {
+const writeDiary = (data, apiEndpoint) => {
+  fetch(apiEndpoint, {
     method: "POST",
     headers: {
       "content-type": "application/json"
@@ -31,8 +31,8 @@ const writeDiary = (data, apiEndpoint, date) => {
   });
 };
 
-const updateDiary = (data, apiEndpoint, date) => {
-  fetch(`${apiEndpoint}/${date}`, {
+const updateDiary = (data, apiEndpoint, day) => {
+  fetch(`${apiEndpoint}/${day}`, {
     method: "PATCH",
     headers: {
       "content-type": "application/json"

@@ -105,3 +105,6 @@ dist
 
 # for macOS
 .DS_Store
+
+# for mongo db data
+mongodb_data/

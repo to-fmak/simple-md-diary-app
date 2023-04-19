@@ -24,7 +24,7 @@ const showDiary = data => {
     <div class="contentsContainer">
       <span class="title" id="titleContent">${data["title"]}</span>
       <span class="date" id="dateContent">last updated: ${date.toLocaleString()}</span>
-      <p id="textContent">${data["text"]}</p>
+      <p id="textContent">${marked.parse(data["text"])}</p>
     </div>
   `;
 };

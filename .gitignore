@@ -108,3 +108,4 @@ dist
 
 # for mongo db data
 mongodb_data/
+configdb/

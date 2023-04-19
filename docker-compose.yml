@@ -1,5 +1,12 @@
 version: '3.1'
 
+networks:
+  fixed_compose_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.1.0/24
+
 services:
   mongo:
     image: mongo
@@ -8,16 +15,35 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      fixed_compose_network:
+        ipv4_address: 10.0.1.2
     ports:
       - 27017:27017
     volumes:
       - ./mongodb_data:/data/db
       - ./configdb:/data/configdb
 
+  app:
+    image: diary-app
+    container_name: diary
+    restart: always
+    environment:
+      MONGO_URI: mongodb://${DB_USERNAME}:${DB_PASSWORD}@10.0.1.2:27017
+    networks:
+      fixed_compose_network:
+        ipv4_address: 10.0.1.3
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
   mongo-express:
     image: mongo-express
     container_name: mongo_express
     restart: always
+    networks:
+      fixed_compose_network:
+        ipv4_address: 10.0.1.4
     ports:
       - 8081:8081
     environment:

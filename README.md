@@ -25,3 +25,6 @@ docker-compose up -d
 ```
 http://localhost:8080
 ```
+
+# 数据保存路径
+- 数据保存在`./mongodb_data/`下，db设定保存在`./configdb/`下。可通过修改`docker-compose.yml`文件内相关volumes设定来更改。

@@ -1,5 +1,6 @@
 import { apiEndpoint } from "../config.js";
 import { writeDiary, updateDiary, getDiary } from "./fetchApi.js";
+import { onTabKey } from "./utils.js";
 
 const showTodayDate = () => {
   const date = new Date();
@@ -24,7 +25,7 @@ const showDiary = data => {
     <div class="contentsContainer">
       <span class="title" id="titleContent">${data["title"]}</span>
       <span class="date" id="dateContent">last updated: ${date.toLocaleString()}</span>
-      <p id="textContent">${marked.parse(data["text"])}</p>
+      <hr><p id="textContent">${marked.parse(data["text"])}</p>
     </div>
   `;
 };
@@ -45,6 +46,10 @@ const showForm = () => {
       </div>
     </form>
   `;
+
+  document.getElementById("inputText").onkeydown = function(e) {
+    onTabKey(e, this);
+  };
 
   document.getElementById("backBtn").onclick = getDiary;
   const formEl = document.querySelector("form");

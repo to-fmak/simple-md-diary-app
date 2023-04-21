@@ -28,6 +28,7 @@ const showDiary = data => {
       <hr><p id="textContent">${marked.parse(data["text"])}</p>
     </div>
   `;
+  hljs.highlightAll();
 };
 
 const showForm = () => {

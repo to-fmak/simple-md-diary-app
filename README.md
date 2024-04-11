@@ -1,5 +1,5 @@
 # Introduction
-- A simple markdown diary app
+- A simple markdown diary app using Express.js and MongoDB
 ![](./img/1.png)
 ![](./img/2.png)
 ![](./img/3.png)
